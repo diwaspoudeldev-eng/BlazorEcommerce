@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BlazorEcommerce.Data
+namespace BlazorEcommerce.Data.Models
 {
     public class Category
     {

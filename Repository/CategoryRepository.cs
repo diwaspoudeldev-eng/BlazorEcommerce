@@ -1,4 +1,5 @@
 ﻿using BlazorEcommerce.Data;
+using BlazorEcommerce.Data.Models;
 using BlazorEcommerce.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 

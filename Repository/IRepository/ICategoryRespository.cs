@@ -1,4 +1,4 @@
-﻿using BlazorEcommerce.Data;
+﻿using BlazorEcommerce.Data.Models;
 
 namespace BlazorEcommerce.Repository.IRepository
 {
