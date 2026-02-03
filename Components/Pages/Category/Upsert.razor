@@ -85,13 +85,13 @@ else
         {
             //create
             await _categoryRepository.CreateAsync(Category);
-            // await _JS.ToastrSuccess("Category Created Successfully");
+             await _JS.ToastrSuccess("Category Created Successfully");
         }
         else
         {
             //update
             await _categoryRepository.UpdateAsync(Category);
-            // await _JS.ToastrSuccess("Category Updated Successfully");
+            await _JS.ToastrSuccess("Category Updated Successfully");
         }
         IsProcessing = false;
         _navigationManager.NavigateTo("category");
