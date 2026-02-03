@@ -1,0 +1,77 @@
+/* Product Card Hover Effects */
+.card {
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Image Hover Effect */
+.card:hover img {
+    transform: scale(1.05);
+}
+
+/* Button Hover Effect */
+.btn-success:hover {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4) !important;
+}
+
+/* Search Input Styling */
+.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+}
+
+/* Category Nav Styling */
+.nav-link {
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #28a745 !important;
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    color: #28a745 !important;
+    border-bottom: 3px solid #28a745 !important;
+}
+
+/* Jumbotron Custom Styling */
+.jumbotron-custom {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Badge Animation */
+.badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Card Body Flexbox */
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure equal card heights */
+.card.h-100 {
+    height: 100% !important;
+}
