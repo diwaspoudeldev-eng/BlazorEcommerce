@@ -2,61 +2,69 @@
 @* @inject SharedStateService _sharedstateService
 @inject IShoppingCartRepository _shoppingCartRepository
  *@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark pb-4 pt-4">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="">
-			<img src="/images/logomen.png" alt="Bootstrap" width="56" height="56">
-			
+<nav class="navbar navbar-expand-md navbar-dark modern-navbar">
+	<div class="container-fluid navbar-container">
+		<a class="navbar-brand brand-wrapper" href="">
+			<div class="logo-container">
+				<img src="/images/logomen.png" alt="Logo" width="56" height="56" class="brand-logo">
+			</div>
 		</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+		<button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
 				aria-controls="navbarCollapse" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
-			<ul class="navbar-nav me-auto mb-2 mb-md-0">
-				<li class="nav-item mx-2">
-					<NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
-						<span class="bi bi-house-door" aria-hidden="true"></span> Home
+			<ul class="navbar-nav me-auto mb-2 mb-md-0 main-nav">
+				<li class="nav-item">
+					<NavLink class="nav-link nav-link-custom" href="/" Match="NavLinkMatch.All">
+						<i class="bi bi-house-door-fill nav-icon"></i>
+						<span class="nav-text">Home</span>
 					</NavLink>
 				</li>
-				<li class="nav-item mx-2">
-					<NavLink class="nav-link" href="/cart">
-						<span class="bi bi-cart3" aria-hidden="true"></span> Cart 
+				<li class="nav-item">
+					<NavLink class="nav-link nav-link-custom" href="/cart">
+						<i class="bi bi-cart3 nav-icon"></i>
+						<span class="nav-text">Cart</span>
 					</NavLink>
 				</li>
-				<li class="nav-item mx-2">
-					<NavLink class="nav-link" href="/order/list">
-						<span class="bi bi-card-list" aria-hidden="true"></span> Order List
+				<li class="nav-item">
+					<NavLink class="nav-link nav-link-custom" href="/order/list">
+						<i class="bi bi-card-list nav-icon"></i>
+						<span class="nav-text">Orders</span>
 					</NavLink>
 				</li>
 			</ul>
-			<ul class="d-flex navbar-nav mb-2 mb-md-0">
+			<ul class="navbar-nav auth-nav mb-2 mb-md-0">
 				<AuthorizeView>
 					<Authorized>
-						<li class="nav-item">
-							<NavLink class="nav-link p-2" href="Account/Manage">
-								Welcome, @context?.User?.Identity?.Name
+						<li class="nav-item user-welcome">
+							<NavLink class="nav-link nav-link-custom user-link" href="Account/Manage">
+								<i class="bi bi-person-circle nav-icon"></i>
+								<span class="nav-text">@context?.User?.Identity?.Name</span>
 							</NavLink>
 						</li>
 						<li class="nav-item">
-							<form action="Account/Logout" method="post">
+							<form action="Account/Logout" method="post" class="logout-form">
 								<AntiforgeryToken />
 								<input type="hidden" name="ReturnUrl" value="" />
-								<button type="submit" class="nav-link btn btn-success">
-									<span class="bi bi-arrow-bar-left-nav-menu" aria-hidden="true"></span> Logout
+								<button type="submit" class="btn btn-logout">
+									<i class="bi bi-box-arrow-right"></i>
+									<span>Logout</span>
 								</button>
 							</form>
 						</li>
 					</Authorized>
 					<NotAuthorized>
 						<li class="nav-item">
-							<NavLink class="nav-link" href="Account/Register">
-								<span class="bi bi-person-nav-menu" aria-hidden="true"></span> Register
+							<NavLink class="nav-link nav-link-custom" href="Account/Register">
+								<i class="bi bi-person-plus nav-icon"></i>
+								<span class="nav-text">Register</span>
 							</NavLink>
 						</li>
 						<li class="nav-item">
-							<NavLink class="nav-link btn btn-success" href="Account/Login">
-								<span class="bi bi-person-badge-nav-menu" aria-hidden="true"></span> Login
+							<NavLink class="btn btn-login" href="Account/Login">
+								<i class="bi bi-box-arrow-in-right"></i>
+								<span>Login</span>
 							</NavLink>
 						</li>
 					</NotAuthorized>
