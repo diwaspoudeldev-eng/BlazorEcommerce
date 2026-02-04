@@ -7,8 +7,8 @@
 @inject NavigationManager _NavigationManager
 @inject IProductRepository _productRepository
 @inject ICategoryRepository _categoryRepository
-@* @inject IShoppingCartRepository _cartRepository
-@inject SharedStateService _SharedStateService *@
+ @inject IShoppingCartRepository _cartRepository
+@inject SharedStateService _SharedStateService 
 
 <PageTitle>Home</PageTitle>
 
@@ -112,7 +112,7 @@ else
                                 <div class="mt-3">
                                     <button class="btn btn-success w-100 py-2 rounded-pill shadow-sm fw-semibold" 
                                             style="transition: all 0.3s ease;"
-                                            @onclick="() => {}">
+                                            @onclick="() => AddOrderItem(prod)">
                                         <i class="bi bi-cart-plus me-2"></i>Add to Cart
                                     </button>
                                 </div>
@@ -187,33 +187,33 @@ else
         return categoryId == _selectedCategoryId ? "active" : string.Empty;
     }
 
-    // private async Task AddOrderItem(Product product)
-    // {
-    //     var authState = await _AuthenticationStateProvider.GetAuthenticationStateAsync();
-    //     var user = authState.User;
-    //     var authenticated = user.Identity is not null && user.Identity.IsAuthenticated;
+    private async Task AddOrderItem(Product product)
+    {
+        var authState = await _AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var authenticated = user.Identity is not null && user.Identity.IsAuthenticated;
 
-    //     //if user is not authenticated then redirect to login
-    //     if (!authenticated)
-    //     {
-    //         _NavigationManager.NavigateTo("account/login");
-    //     }
-    //     else
-    //     {
-    //         //add item to cart
-    //         var userId = user.FindFirst(u => u.Type.Contains("nameidentifier"))?.Value;
-    //         var result = await
-    //         _cartRepository.UpdateCartAsync(userId, product.Id, 1);
-    //         _SharedStateService.TotalCartCount = await _cartRepository.GetTotalCartCartCountAsync(userId);
-    //         if (result)
-    //         {
-    //             _JS?.ToastrSuccess("Product added to cart successfully");
-    //         }
-    //         else
-    //         {
-    //             _JS?.ToastrError("Error encountered");
-    //         }
-    //     }
-    // }
+        //if user is not authenticated then redirect to login
+        if (!authenticated)
+        {
+            _NavigationManager.NavigateTo("account/login");
+        }
+        else
+        {
+            //add item to cart
+            var userId = user.FindFirst(u => u.Type.Contains("nameidentifier"))?.Value;
+            var result = await
+            _cartRepository.UpdateCartAsync(userId, product.Id, 1);
+            _SharedStateService.TotalCartCount = await _cartRepository.GetTotalCartCartCountAsync(userId);
+            if (result)
+            {
+                _JS?.ToastrSuccess("Product added to cart successfully");
+            }
+            else
+            {
+                _JS?.ToastrError("Error encountered");
+            }
+        }
+    }
 
 }
